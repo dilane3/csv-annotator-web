@@ -3,9 +3,31 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import { FileItem } from "./components/File";
+import { useActions, useSignal } from "@dilane3/gx";
+import { useRef } from "react";
 
 function App() {
-  const [count, setCount] = useState(0);
+  // Global state
+  const files = useSignal("files");
+
+  // Global actions
+  const { addFiles } = useActions("files");
+
+  // Ref section
+  const inputRef = useRef();
+
+  // Some functions
+  const handleOpenFolder = () => {
+    if (inputRef.current) inputRef.current.click();
+  };
+
+  const handleFileSelected = (event) => {
+    // Add files to global state
+    addFiles(event.target.files);
+
+    // Empty files into input tag
+    // inputRef.current.files;
+  };
 
   return (
     <main className="App">
@@ -24,7 +46,19 @@ function App() {
 
         <div className="main__upload">
           <div className="main__uploader">
-            <button className="main__uploader__title">
+            <input
+              ref={inputRef}
+              type="file"
+              onChange={handleFileSelected}
+              multiple
+              hidden
+              accept="text/csv"
+            />
+
+            <button
+              className="main__uploader__title"
+              onClick={handleOpenFolder}
+            >
               <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
                 <path
                   fill-rule="evenodd"
@@ -74,16 +108,9 @@ function App() {
           </div>
 
           <section className="main__files">
-            <FileItem />
-            <FileItem />
-            <FileItem />
-            <FileItem />
-            <FileItem />
-            <FileItem />
-            <FileItem />
-            <FileItem />
-            <FileItem />
-            <FileItem />
+            {files.map((file, index) => (
+              <FileItem key={index} file={file} />
+            ))}
           </section>
         </div>
       </section>
