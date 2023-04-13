@@ -126,7 +126,21 @@
 }
 
 .upload__btn svg {
-  fill: var(--color-text)
+  fill: var(--color-text);
+}
+
+.main__results {
+  background-color: var(--color-primary);
+  display: flex;
+  align-items: center;
+}
+
+.main__results span {
+  margin-left: 20px;
+}
+
+.main__results svg path {
+  fill: var(--color-text);
 }
 
 .main__uploader__title {
@@ -140,12 +154,22 @@
   justify-content: space-between;
   align-items: center;
   width: 180px;
+  transition: all 0.3s;
 }
 
 .main__uploader__title:hover {
-  background-color: var(--color-text);
+  background-color: #eee;
 }
 
-.main__uploader__title svg {
+.main__uploader__title > svg path {
   fill: var(--color-primary);
+}
+
+.main__files {
+  width: calc(100% + 20px);
+  max-height: 400px;
+  height: auto;
+  margin: 10px 0 20px 0;
+  overflow-y: auto;
+  overflow-x: hidden;
 }

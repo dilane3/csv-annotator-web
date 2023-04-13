@@ -1,0 +1,55 @@
+.file__item {
+  width: calc(100% - 40px);
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 0 20px;
+}
+
+.file__item:not(:last-child) {
+  border-bottom: 1px solid rgb(184, 184, 184);
+}
+
+.file__info {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.file__image {
+  object-fit: contain;
+}
+
+.file__name {
+  font-size: 0.9rem;
+  font-family: "PoppinsRegular";
+  color: var(--color-text-dark);
+  margin-left: 10px;
+}
+
+.file__controls {
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.file__controls svg {
+  fill: rgb(252, 124, 124);
+  width: 30px;
+  height: 30px;
+  transition: fill 0.2s;
+}
+
+.file__controls svg:hover {
+  fill: rgb(243, 83, 83);
+}
+
+.file__size {
+  font-size: 0.9rem;
+  font-family: "PoppinsRegular";
+  color: rgb(99, 99, 99);
+}

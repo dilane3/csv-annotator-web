@@ -210,6 +210,11 @@
     "@babel/helper-validator-identifier" "^7.19.1"
     to-fast-properties "^2.0.0"
 
+"@dilane3/gx@^1.2.6":
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/@dilane3/gx/-/gx-1.2.6.tgz#1f51976856e65892377ca2de781bc6bad4570a60"
+  integrity sha512-2svz9YX651q9PbDosXpElP8TRsXEw8NT1mmQm0IJIBEqCkJYtmyNG/7E6UnWpW8gN7Zcftl05n73608U68B0hQ==
+
 "@esbuild/android-arm64@0.17.16":
   version "0.17.16"
   resolved "https://registry.yarnpkg.com/@esbuild/android-arm64/-/android-arm64-0.17.16.tgz#7b18cab5f4d93e878306196eed26b6d960c12576"
