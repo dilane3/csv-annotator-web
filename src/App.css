@@ -122,11 +122,23 @@
   justify-content: space-between;
   align-items: center;
   width: 200px;
+  background-color: rgb(207, 207, 207);
+  color: rgb(82, 82, 82);
+  font-family: "PoppinsRegular";
+  transition: all 0.2s;
+}
+
+.upload__btn.active {
+  background-color: #1a1a1a;
   font-family: "PoppinsBold";
 }
 
-.upload__btn svg {
+.upload__btn.active svg {
   fill: var(--color-text);
+}
+
+.upload__btn svg {
+  fill: rgb(82, 82, 82);
 }
 
 .main__results {
@@ -144,6 +156,7 @@
 }
 
 .main__uploader__title {
+  position: relative;
   font-family: "PoppinsRegular";
   color: var(--color-text-dark);
   background-color: var(--color-text);
@@ -165,6 +178,17 @@
   fill: var(--color-primary);
 }
 
+.badge {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  background-color: rgb(238, 108, 108);
+  color: var(--color-text);
+  font-size: 10px;
+}
+
 .main__files {
   width: calc(100% + 20px);
   max-height: 400px;
@@ -172,4 +196,8 @@
   margin: 10px 0 20px 0;
   overflow-y: auto;
   overflow-x: hidden;
+}
+
+.tips {
+  color: var(--color-text-dark);
 }
