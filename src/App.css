@@ -122,6 +122,7 @@
   justify-content: space-between;
   align-items: center;
   width: 200px;
+  font-family: "PoppinsBold";
 }
 
 .upload__btn svg {
@@ -129,7 +130,7 @@
 }
 
 .main__uploader__title {
-  font-family: "PoppinsBold";
+  font-family: "PoppinsRegular";
   color: var(--color-text-dark);
   background-color: var(--color-text);
   border: 1px solid #888;
@@ -138,9 +139,13 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 200px;
+  width: 180px;
 }
 
 .main__uploader__title:hover {
   background-color: var(--color-text);
+}
+
+.main__uploader__title svg {
+  fill: var(--color-primary);
 }
