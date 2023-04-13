@@ -1,0 +1,146 @@
+@font-face {
+  font-family: "PoppinsRegular";
+  src: url("./assets/fonts/Poppins-Regular.ttf");
+}
+
+@font-face {
+  font-family: "PoppinsBold";
+  src: url("./assets/fonts/Poppins-Bold.ttf");
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.header {
+  width: 100vw;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  padding: 0 200px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header span {
+  font-size: 20px;
+  font-family: "PoppinsBold";
+}
+
+.main {
+  width: calc(100vw - 400px);
+  height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 200px;
+}
+
+.main__title {
+  max-width: 800px;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main__title h1 {
+  font-size: 40px;
+  font-weight: 600;
+  font-family: "PoppinsBold";
+}
+
+.main__title span {
+  color: var(--color-primary);
+}
+
+.main__title p {
+  font-size: 1.3rem;
+}
+
+.main__upload {
+  width: 100%;
+  min-height: 100px;
+  margin-top: 20px;
+}
+
+.main__uploader {
+  width: 100%;
+  height: 60px;
+  border-radius: 10px;
+  background-color: var(--color-text);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.upload__btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 200px;
+}
+
+.upload__btn svg {
+  fill: var(--color-text)
+}
+
+.main__uploader__title {
+  font-family: "PoppinsBold";
+  color: var(--color-text-dark);
+  background-color: var(--color-text);
+  border: 1px solid #888;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 200px;
+}
+
+.main__uploader__title:hover {
+  background-color: var(--color-text);
+}
