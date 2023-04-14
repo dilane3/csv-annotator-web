@@ -14,6 +14,10 @@
   text-align: center;
 }
 
+.App {
+  width: 100vw;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -51,7 +55,7 @@
 }
 
 .header {
-  width: 100vw;
+  width: calc(100vw - 400px);
   height: 80px;
   display: flex;
   flex-direction: row;
@@ -105,7 +109,7 @@
 }
 
 .main__uploader {
-  width: 100%;
+  width: calc(100% - 20px);
   height: 60px;
   border-radius: 10px;
   background-color: var(--color-text);
@@ -129,7 +133,8 @@
 }
 
 .upload__btn.active {
-  background-color: #1a1a1a;
+  background-color: var(--color-primary);
+  color: #fff;
   font-family: "PoppinsBold";
 }
 
@@ -190,7 +195,7 @@
 }
 
 .main__files {
-  width: calc(100% + 20px);
+  width: calc(100%);
   max-height: 400px;
   height: auto;
   margin: 10px 0 20px 0;
@@ -200,4 +205,91 @@
 
 .tips {
   color: var(--color-text-dark);
+}
+
+@media screen and (max-width: 1100px) {
+  .header, 
+  .main {
+    padding: 0 100px;
+    width: calc(100vw - 200px);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header, 
+  .main {
+    padding: 0 50px;
+    width: calc(100vw - 100px);
+  }
+
+  .upload__btn,
+  .main__uploader__title {
+    width: auto;
+    padding: 10px;
+  }
+
+  .tips {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .tips {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .header,
+  .main {
+    padding: 0 20px;
+    width: calc(100vw - 40px);
+  }
+
+  .main__uploader {
+    height: auto;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .main__uploader button,
+  .main__uploader a {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .main__uploader button svg {
+    margin: 0 10px;
+  }
+
+  .main__uploader button span {
+    margin: 0;
+  }
+
+  .main__uploader button:not(:last-child),
+  .main__uploader a {
+    margin-bottom: 10px;
+  }
+
+  .main__title h1 {
+    font-size: 30px;
+    font-weight: 600;
+    font-family: "PoppinsBold";
+  }
+
+  .main__title p {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .header, 
+  .main {
+    padding: 0 20px;
+    width: calc(100vw - 40px);
+  }
 }

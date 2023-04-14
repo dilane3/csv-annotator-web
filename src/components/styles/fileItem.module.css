@@ -53,3 +53,21 @@
   font-family: "PoppinsRegular";
   color: rgb(99, 99, 99);
 }
+
+
+@media screen and (max-width: 768px) {
+  .file__item {
+    width: calc(100% - 20px);
+    padding: 0 10px;
+  }
+
+  .file__controls {
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .file__controls {
+    width: 100px;
+  }
+}

@@ -5,10 +5,12 @@ const loadingSignal = createSignal({
   state: {
     loading: false,
     finished: false,
+    link: null,
   },
   actions: {
-    stop: (_) => ({ loading: false, finished: true }),
-    start: (_) => ({ loading: true, finished: false }),
+    stop: (state) => ({ ...state, loading: false, finished: true }),
+    start: (state) => ({ ...state, loading: true, finished: false }),
+    setLink: (state, payload) => ({ ...state, link: payload }),
   },
 });
 
