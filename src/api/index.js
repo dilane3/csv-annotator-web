@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "http://192.168.43.30:5000/api",
+  baseURL: "https://csv-annotator.onrender.com/api",
   timeout: 86400000,
 });
 
