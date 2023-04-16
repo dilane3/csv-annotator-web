@@ -8,7 +8,9 @@ const fileSignal = createSignal({
       const files = [...state];
 
       for (let file of payload) {
-        if (!files.map((f) => f.name).includes(file.name)) {
+        const fileExtensionCorrect = file.name.split(".").pop() === "csv";
+
+        if (fileExtensionCorrect && !files.map((f) => f.name).includes(file.name)) {
           files.push(file);
         }
       }
