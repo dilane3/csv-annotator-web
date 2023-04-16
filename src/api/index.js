@@ -21,6 +21,7 @@ export const annotateCsv = async (files) => {
     const response = await instance.post("/api/annotation", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
+        "Access-Control-Allow-Origin": "*",
       },
     });
 
