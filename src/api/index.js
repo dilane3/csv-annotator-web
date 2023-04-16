@@ -1,14 +1,14 @@
 import axios from "axios";
 
-export const instance = axios.create({
-  baseURL: "http://localhost:5000",
-  timeout: 86400000,
-});
-
 // export const instance = axios.create({
-//   baseURL: "https://csv-annotator.onrender.com",
+//   baseURL: "http://localhost:5000",
 //   timeout: 86400000,
 // });
+
+export const instance = axios.create({
+  baseURL: "https://csv-annotator.onrender.com",
+  timeout: 86400000,
+});
 
 export const annotateCsv = async (files) => {
   const formData = new FormData();
