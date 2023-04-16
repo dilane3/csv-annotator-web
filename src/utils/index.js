@@ -20,3 +20,5 @@ export const formatTime = (time) => {
 
   return `${hourstoString}:${minutestoString}:${secondstoString}`;
 }
+
+export const downloadBaseUrl = "https://csv-annotator.onrender.com/static";

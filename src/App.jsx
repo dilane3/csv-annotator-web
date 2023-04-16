@@ -10,6 +10,7 @@ import { useRef } from "react";
 import { annotateCsv } from "./api";
 import { instance } from "./api";
 import { formatTime } from "./utils";
+import { downloadBaseUrl } from "./utils";
 
 function App() {
   // Global state
@@ -40,12 +41,6 @@ function App() {
     return () => clearInterval(timer);
   }, [loading]);
 
-  useEffect(() => {
-    if (finished) {
-      handleDownload(link);
-    }
-  }, [finished]);
-
   // Some functions
   const handleOpenFolder = () => {
     if (!loading && inputRef.current) inputRef.current.click();
@@ -67,6 +62,8 @@ function App() {
     setCounter(0);
 
     const { data } = await annotateCsv(files);
+
+    console.log(data)
 
     if (data) {
       // Set link to download
@@ -152,8 +149,8 @@ function App() {
               <span className="badge">{files.length}</span>
             </button>
 
-            {finished && zip !== null ? (
-              <a href={zip.url} download={zip.name}>
+            {finished && link !== null ? (
+              <a href={`${downloadBaseUrl}/${link}`} download={link.split("/").pop()} target="_blanc">
                 <button className="main__results">
                   <svg
                     width="24"
