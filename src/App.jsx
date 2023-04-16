@@ -8,7 +8,7 @@ import { FileItem } from "./components/File";
 import { useActions, useSignal } from "@dilane3/gx";
 import { useRef } from "react";
 import { annotateCsv } from "./api";
-import { url } from "./utils";
+import { instance } from "./api";
 
 function App() {
   // Global state
@@ -19,8 +19,12 @@ function App() {
   const { addFiles } = useActions("files");
   const { start, stop, setLink } = useActions("loading");
 
+  // Local state
+  const [zip, setZip] = useState(null);
+
   // Ref section
   const inputRef = useRef();
+  const downloadRef = useRef();
 
   // Some functions
   const handleOpenFolder = () => {
@@ -41,17 +45,41 @@ function App() {
     // Start loading
     start();
 
-    const { data, error } = await annotateCsv(files);
+    const { data } = await annotateCsv(files);
 
     if (data) {
-      console.log(data);
-
       // Set link to download
       setLink(data.link);
+
+      // Stop loading
+      stop();
+
+      // Download file
+      await handleDownload(data.link);
     }
 
     // Stop loading
     stop();
+  };
+
+  const handleDownload = async (link) => {
+    if (!finished) return;
+
+    // Download file with custom name
+    const { data } = await instance.get(`/static/${link}`, {
+      responseType: "blob",
+    });
+
+    // Create a blob link to download
+    const urlToDownload = window.URL.createObjectURL(new Blob([data]));
+
+    const filename = link.split("/").pop();
+
+    // Add link to download
+    setZip({
+      url: urlToDownload,
+      name: filename,
+    })
   };
 
   return (
@@ -103,8 +131,8 @@ function App() {
               <span className="badge">{files.length}</span>
             </button>
 
-            {finished ? (
-              <a href={`${url}/${link}`} download>
+            {finished && zip ? (
+              <a href={zip.url} download={zip.name}>
                 <button className="main__results">
                   <svg
                     width="24"
