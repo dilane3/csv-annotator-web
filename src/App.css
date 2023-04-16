@@ -120,6 +120,17 @@
   padding: 0 10px;
 }
 
+.main__chrono {
+  width: 100px;
+  padding: 10px 20px 5px 20px;
+  background-color: var(--color-text);
+  color: var(--color-text-dark);
+  font-family: "PoppinsRegular";
+  font-size: 1rem;
+  margin: 0 auto;
+  border-radius: 10px 10px 0 0;
+}
+
 .upload__btn {
   display: flex;
   flex-direction: row;

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import loaderBlue from "./assets/loader_blue.svg";
@@ -9,6 +9,7 @@ import { useActions, useSignal } from "@dilane3/gx";
 import { useRef } from "react";
 import { annotateCsv } from "./api";
 import { instance } from "./api";
+import { formatTime } from "./utils";
 
 function App() {
   // Global state
@@ -21,10 +22,29 @@ function App() {
 
   // Local state
   const [zip, setZip] = useState(null);
+  const [counter, setCounter] = useState(0);
 
   // Ref section
   const inputRef = useRef();
-  const downloadRef = useRef();
+
+  // UseEffect section
+  useEffect(() => {
+    let timer;
+
+    if (loading) {
+      timer = setInterval(() => {
+        setCounter((prev) => prev + 1);
+      }, 1000);
+    }
+
+    return () => clearInterval(timer);
+  }, [loading]);
+
+  useEffect(() => {
+    if (finished) {
+      handleDownload(link);
+    }
+  }, [finished])
 
   // Some functions
   const handleOpenFolder = () => {
@@ -44,18 +64,13 @@ function App() {
 
     // Start loading
     start();
+    setCounter(0);
 
     const { data } = await annotateCsv(files);
 
     if (data) {
       // Set link to download
       setLink(data.link);
-
-      // Stop loading
-      stop();
-
-      // Download file
-      await handleDownload(data.link);
     }
 
     // Stop loading
@@ -75,11 +90,13 @@ function App() {
 
     const filename = link.split("/").pop();
 
+    console.log({ urlToDownload })
+
     // Add link to download
     setZip({
       url: urlToDownload,
       name: filename,
-    })
+    });
   };
 
   return (
@@ -98,6 +115,7 @@ function App() {
         </div>
 
         <div className="main__upload">
+          <div className="main__chrono">{ formatTime(counter) }</div>
           <div className="main__uploader">
             <input
               ref={inputRef}
@@ -126,12 +144,12 @@ function App() {
                   fill="#000"
                 />
               </svg>
-              <span>Add csv files</span>
+              <span>Select Files</span>
 
               <span className="badge">{files.length}</span>
             </button>
 
-            {finished && zip ? (
+            {finished && zip !== null ? (
               <a href={zip.url} download={zip.name}>
                 <button className="main__results">
                   <svg
