@@ -44,7 +44,7 @@ function App() {
     if (finished) {
       handleDownload(link);
     }
-  }, [finished])
+  }, [finished]);
 
   // Some functions
   const handleOpenFolder = () => {
@@ -83,6 +83,9 @@ function App() {
     // Download file with custom name
     const { data } = await instance.get(`/static/${link}`, {
       responseType: "blob",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
     });
 
     // Create a blob link to download
@@ -90,7 +93,7 @@ function App() {
 
     const filename = link.split("/").pop();
 
-    console.log({ urlToDownload })
+    console.log({ urlToDownload });
 
     // Add link to download
     setZip({
@@ -115,7 +118,7 @@ function App() {
         </div>
 
         <div className="main__upload">
-          <div className="main__chrono">{ formatTime(counter) }</div>
+          <div className="main__chrono">{formatTime(counter)}</div>
           <div className="main__uploader">
             <input
               ref={inputRef}
